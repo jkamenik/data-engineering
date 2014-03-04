@@ -11,6 +11,6 @@ class CreateMerchants < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :merchants, [:name, :address]
+    add_index :merchants, :name, unique: true
   end
 end

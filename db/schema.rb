@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140304015633) do
     t.datetime "updated_at"
   end
 
-  add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
+  add_index "customers", ["name"], name: "index_customers_on_name", unique: true, using: :btree
 
   create_table "customers_products", force: true do |t|
     t.integer  "customer_id",    null: false
@@ -60,15 +60,16 @@ ActiveRecord::Schema.define(version: 20140304015633) do
     t.datetime "updated_at"
   end
 
-  add_index "merchants", ["name", "address"], name: "index_merchants_on_name_and_address", using: :btree
+  add_index "merchants", ["name"], name: "index_merchants_on_name", unique: true, using: :btree
 
   create_table "products", force: true do |t|
-    t.string   "name",       null: false
-    t.float    "price",      null: false
+    t.integer  "merchant_id", null: false
+    t.string   "name",        null: false
+    t.float    "price",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "products", ["name"], name: "index_products_on_name", using: :btree
+  add_index "products", ["merchant_id", "name"], name: "index_products_on_merchant_id_and_name", unique: true, using: :btree
 
 end
