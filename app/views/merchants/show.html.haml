@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @merchant.name
+%p
+  %b Address:
+  = @merchant.address
+%p
+  %b Address1:
+  = @merchant.address1
+%p
+  %b City:
+  = @merchant.city
+%p
+  %b State:
+  = @merchant.state
+%p
+  %b Zip:
+  = @merchant.zip
+
+= link_to 'Edit', edit_merchant_path(@merchant)
+\|
+= link_to 'Back', merchants_path

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Customer:
+  = @customers_product.customer_id
+%p
+  %b Product:
+  = @customers_product.product_id
+%p
+  %b Quantity:
+  = @customers_product.quantity
+%p
+  %b Purchase price:
+  = @customers_product.purchase_price
+
+= link_to 'Edit', edit_customers_product_path(@customers_product)
+\|
+= link_to 'Back', customers_products_path

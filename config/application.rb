@@ -23,6 +23,7 @@ module DataEngineering
       generate.stylesheets false
       generate.test_framework :rspec
       generate.view_specs false
+      generate.template_engine :haml
     end
 
     # Settings in config/environments/* take precedence over those specified here.

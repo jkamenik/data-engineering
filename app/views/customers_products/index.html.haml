@@ -1,0 +1,25 @@
+%h1 Listing customers_products
+
+%table
+  %tr
+    %th Customer
+    %th Product
+    %th Quantity
+    %th Purchase price
+    %th
+    %th
+    %th
+
+  - @customers_products.each do |customers_product|
+    %tr
+      %td= customers_product.customer_id
+      %td= customers_product.product_id
+      %td= customers_product.quantity
+      %td= customers_product.purchase_price
+      %td= link_to 'Show', customers_product
+      %td= link_to 'Edit', edit_customers_product_path(customers_product)
+      %td= link_to 'Destroy', customers_product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Customers product', new_customers_product_path
