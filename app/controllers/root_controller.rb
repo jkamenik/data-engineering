@@ -2,6 +2,7 @@ class RootController < ApplicationController
   include ActiveSupport::NumberHelper
   
   def index
+    @customers_products = CustomersProduct.all
   end
 
   def legacy_import
@@ -11,6 +12,6 @@ class RootController < ApplicationController
     imported_items = CustomersProduct.from_legacy_csv params[:file].tempfile.to_path.to_s
 
     revenue = imported_items.sum(&:total_price)
-    redirect_to :legacy_import, :notice => "Gross Revenue #{number_to_currency revenue}"
+    redirect_to root_path, :notice => "Gross Revenue #{number_to_currency revenue}"
   end
 end

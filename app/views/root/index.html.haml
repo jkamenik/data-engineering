@@ -1,2 +1,18 @@
-%ul
-  %li= link_to 'Import', legacy_import_path
+%h1 Purchases
+
+= link_to 'Import', legacy_import_path
+
+%table{width: '100%'}
+  %tr
+    %th Customer
+    %th Product
+    %th Price
+    %th Quantity
+    %th Total Price
+  - @customers_products.each do |cp|
+    %tr
+      %td= cp.customer.name
+      %td= cp.product.name
+      %td= number_to_currency cp.purchase_price
+      %td= cp.quantity
+      %td= number_to_currency cp.total_price
