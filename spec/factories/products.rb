@@ -4,5 +4,7 @@ FactoryGirl.define do
   factory :product do
     sequence(:name) {|n| "Product #{"%05d" % n}"}
     price           1.5
+
+    association :merchant
   end
 end
