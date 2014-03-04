@@ -58,7 +58,7 @@ describe CustomersProduct do
     end
 
     it 'calls "from_legacy" on merchants' do
-      expect(Merchant).to receive(:from_legacy)
+      expect(Merchant).to receive(:from_legacy).and_return create(:merchant)
       CustomersProduct.from_legacy test_row
     end
   end
