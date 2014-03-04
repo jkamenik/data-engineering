@@ -2,11 +2,11 @@
 
 FactoryGirl.define do
   factory :merchant do
-    name "MyString"
-    address "MyString"
-    address1 "MyString"
-    city "MyString"
-    state "MyString"
-    zip "MyString"
+    sequence(:name) {|n| "Merchant #{"%05d" % n}"}
+    address         '1 Main St.'
+    address1        ''
+    city            ''
+    state           ''
+    zip             ''
   end
 end

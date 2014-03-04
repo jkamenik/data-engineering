@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :customer do
-    name "MyString"
+    sequence(:name) {|x| "Customer #{"%05d" % n}"}
   end
 end
