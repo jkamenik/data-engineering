@@ -25,11 +25,17 @@ class CustomersProduct < ActiveRecord::Base
     cp.product        = Product.from_legacy row
     cp.quantity       = row['purchase count'].to_i
     cp.purchase_price = row['item price'].to_f
-    cp.save
+    cp.save!
     cp
+  rescue ActiveRecord::RecordInvalid => e
+    logger.error e.to_s
+    logger.debug e.backtrace.join("\n")
+    
+    # ignore invalid
+    self.new
   end
 
   def total_price
-    quantity * purchase_price
+    quantity.to_f * purchase_price.to_f
   end
 end

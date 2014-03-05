@@ -6,7 +6,7 @@ class Merchant < ActiveRecord::Base
 
     unless merch
       merch = self.new name: row['merchant name'], address: row['merchant address']
-      merch.save
+      merch.save!
     end
 
     merch

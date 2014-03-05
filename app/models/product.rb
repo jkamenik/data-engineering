@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
     unless prod
       prod = self.new name: row['item description'], price: row['item price']
       prod.merchant = merch
-      prod.save
+      prod.save!
     end
 
     prod

@@ -34,6 +34,13 @@ describe CustomersProduct do
         CustomersProduct.from_legacy nil
       }.to raise_error TypeError
     end
+    
+    it 'skips invalid rows' do
+      test_row['item description'] = nil
+      
+      item = CustomersProduct.from_legacy test_row
+      expect(item.total_price).to eq 0
+    end
 
     it 'pulls quantity from "purchase count"' do
       cp = CustomersProduct.from_legacy test_row

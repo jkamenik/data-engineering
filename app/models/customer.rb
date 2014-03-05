@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
 
     unless cust
       cust = self.new name: row['purchaser name']
-      cust.save
+      cust.save!
     end
 
     cust
